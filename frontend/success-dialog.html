@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoBooth Success Dialog</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Satoshi Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+        .dialog-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        .dialog {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+            animation: dialogFadeIn 0.3s ease-out;
+        }
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-color: #58C322;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .primary-button {
+            background-color: #0095f6;
+            color: white;
+            width: 100%;
+            padding: 7px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .primary-button:hover {
+            background-color: #0086e0;
+        }
+        .secondary-button {
+            color: #0095f6;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .secondary-button:hover {
+            color: #0086e0;
+        }
+        @keyframes dialogFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Demo styles - for showing different dialog variants */
+        .demo-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .demo-title {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .demo-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Container - This is just for demonstration purposes -->
+    <div class="demo-container">
+        <h1 class="demo-title text-2xl font-bold">PhotoBooth Success Dialog Examples</h1>
+        <div class="demo-grid">
+            <!-- Standard Success Dialog -->
+            <div class="demo-card">
+                <h2 class="font-semibold mb-4">Standard Success Dialog</h2>
+                <div class="dialog">
+                    <div class="p-8 flex flex-col items-center">
+                        <div class="success-icon mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Success!</h3>
+                        <p class="text-gray-500 text-center mb-6">Your post has been shared successfully.</p>
+                        <button class="primary-button mb-3">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Account Created Dialog -->
+            <div class="demo-card">
+                <h2 class="font-semibold mb-4">Account Created Dialog</h2>
+                <div class="dialog">
+                    <div class="p-8 flex flex-col items-center">
+                        <div class="success-icon mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Account Created</h3>
+                        <p class="text-gray-500 text-center mb-6">Your PhotoBooth account has been created successfully.</p>
+                        <button class="primary-button mb-3">
+                            Continue to Feed
+                        </button>
+                        <button class="secondary-button">
+                            Complete Your Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Password Changed Dialog -->
+            <div class="demo-card">
+                <h2 class="font-semibold mb-4">Password Changed Dialog</h2>
+                <div class="dialog">
+                    <div class="p-8 flex flex-col items-center">
+                        <div class="success-icon mb-6" style="background-color: #0095f6;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Password Updated</h3>
+                        <p class="text-gray-500 text-center mb-6">Your password has been changed successfully. You'll be logged out from all other devices.</p>
+                        <button class="primary-button">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Post Saved Dialog -->
+            <div class="demo-card">
+                <h2 class="font-semibold mb-4">Post Saved Dialog</h2>
+                <div class="dialog">
+                    <div class="p-6 flex flex-col items-center">
+                        <div class="mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-center mb-1">Saved</h3>
+                        <p class="text-gray-500 text-center text-sm mb-4">Post saved to your collection.</p>
+                        <div class="flex w-full">
+                            <button class="w-1/2 py-3 border-t border-r border-gray-200 font-semibold text-sm">
+                                View Collection
+                            </button>
+                            <button class="w-1/2 py-3 border-t border-gray-200 text-blue-500 font-semibold text-sm">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story Posted Dialog -->
+            <div class="demo-card">
+                <h2 class="font-semibold mb-4">Story Posted Dialog</h2>
+                <div class="dialog">
+                    <div class="p-8 flex flex-col items-center">
+                        <div class="success-icon mb-6" style="background-color: #833AB4; background-image: linear-gradient(45deg, #833AB4, #FD1D1D, #FCAF45); border: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Story Posted!</h3>
+                        <p class="text-gray-500 text-center mb-6">Your story has been shared with your followers.</p>
+                        <div class="flex space-x-3">
+                            <button class="primary-button px-6">
+                                View Story
+                            </button>
+                            <button class="border border-gray-300 text-black px-6 py-1.5 rounded-md font-semibold text-sm">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Simple Toast Dialog -->
+            <div class="demo-card">
+                <h2 class="font-semibold mb-4">Simple Toast Dialog</h2>
+                <div class="dialog" style="max-width: 300px;">
+                    <div class="p-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="text-sm font-medium">Comment posted successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

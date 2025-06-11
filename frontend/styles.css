@@ -1,0 +1,164 @@
+body {
+  font-family: "Satoshi", sans-serif;
+  background-color: white;
+}
+
+:root {
+  --sidebar-width: 250px;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+.floating-navbar {
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  z-index: 50;
+  height: 100%;
+  width: var(--sidebar-width);
+}
+
+/* Subtle animation for like button */
+.like-button:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s;
+}
+
+/* Truncate text with more button */
+.caption-text {
+  display: inline;
+}
+
+.edit-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  background-color: #fafafa;
+  font-size: 14px;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #a8a8a8;
+}
+.password-strength {
+  height: 4px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.main-container {
+  margin-left: var(--sidebar-width);
+}
+
+.upload-container {
+  height: calc(100vh - 60px);
+  margin-left: var(--sidebar-width);
+  width: 100%;
+  max-width: calc(100vw - var(--sidebar-width));
+}
+.image-preview {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  background-color: #f8f8f8;
+}
+.caption-input {
+  resize: none;
+  height: 150px;
+}
+
+.profile-container {
+  max-width: 935px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.story-highlight {
+  width: 77px;
+  height: 77px;
+}
+
+.story-highlight-img {
+  width: 66px;
+  height: 66px;
+}
+
+.grid-image {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.grid-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+.post-image {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.comments-section {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.grid-image {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.grid-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.comments-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.comments-section {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+}
+
+.notifications-container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.notification-item {
+  transition: background-color 0.2s;
+}
+.notification-item:hover {
+  background-color: #fafafa;
+}
+.notification-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #0095f6;
+  border-radius: 50%;
+}
+.post-thumbnail {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+}

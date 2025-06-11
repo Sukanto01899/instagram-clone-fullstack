@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile • PhotoBooth</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Satoshi Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./assets/logo-2.svg" type="image/svg+xml">
+    
+</head>
+<body class="bg-gray-50">
+    <!-- Floating Navbar -->
+    <aside class="hidden floating-navbar bg-white  border px-6 py-2 md:flex flex-col">
+        <a href="./index.html" class="flex gap-2 items-center font-medium py-4 mb-8">
+            <img src="./assets/logo-2.svg" alt="PhotoBooth" class="h-6 object-contain">
+            <h2 class="text-lg">Photo Booth</h2>
+        </a>
+
+        <ul class="space-y-8 flex-1">
+            <li>
+                <a href="./index.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-zinc-800" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span class="text-sm text-zinc-800">Home</span>
+                </a>
+            </li>
+    
+            <li>
+                <a href="./notification.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-zinc-800" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span class="text-xs">Notifications</span>
+                </a>
+            </li>
+            <li>
+                <a href="./create-post.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-zinc-800" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    <span class="text-xs">Create</span>
+                </a>
+            </li>
+
+             <li>
+                <a href="./profile.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="text-xs">Profile</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="flex  justify-between">
+            <a href="./profile.html">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-300">
+                        <img src="./assets/avatar.jpg" alt="User avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-2">
+                        <span class="font-semibold text-sm">Saad Hasan</span>
+                        <p class="text-xs text-gray-500  leading-0">@saadh393</p>
+                    </div>
+                </div>
+            </a>
+
+            <button title="logout" class="">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
+                    <path
+                        d="m8 0c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm-3.5 4h6.5v2h-6.5c-1.379 0-2.5 1.122-2.5 2.5v5.5h-2v-5.5c0-2.481 2.019-4.5 4.5-4.5zm11.5 8h2v2h-2c-1.654 0-3-1.346-3-3v-6c0-1.654 1.346-3 3-3h2v2h-2c-.552 0-1 .449-1 1v6c0 .551.448 1 1 1zm8-3.941c0 .548-.24 1.07-.658 1.432l-2.681 2.362-1.322-1.5 1.535-1.354h-3.874v-2h3.74l-1.401-1.235 1.322-1.5 2.688 2.37c.411.355.651.877.651 1.425z" />
+                </svg>
+            </button>
+        </div>
+    </aside>
+    
+    <div class="edit-container">
+        <h1 class="text-2xl font-bold mb-8">Edit profile</h1>
+        
+        <!-- Profile Picture Section -->
+        <div class="bg-white rounded-lg p-6 mb-6">
+            <div class="flex items-center">
+                <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                    <img src="./assets/users/user-1.png" alt="Saad Hasan" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="font-semibold text-base">Saad Hasan</h2>
+                    <p class="text-gray-500">@saadh393</p>
+                </div>
+                <button class="ml-auto bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition">
+                    Change photo
+                </button>
+            </div>
+        </div>
+        
+        <!-- Website Section -->
+        <div class="bg-white rounded-lg p-6 mb-6">
+            <label class="block mb-2 font-medium">Website</label>
+            <input type="text" class="form-input mb-2" value="saadh393.github.io">
+            <p class="text-gray-500 text-xs">
+                Editing your links is only available on mobile. Visit the PhotoBooth app and edit your profile to change the websites in your bio.
+            </p>
+        </div>
+        
+        <!-- Bio Section -->
+        <div class="bg-white rounded-lg p-6 mb-6">
+            <label class="block mb-2 font-medium">Bio</label>
+            <textarea class="form-input resize-none h-24 mb-1">Pain Demands to be Felt</textarea>
+            <div class="flex justify-end">
+                <span class="text-gray-500 text-xs">23 / 150</span>
+            </div>
+        </div>
+        
+        <!-- Gender Section -->
+        <div class="bg-white rounded-lg p-6 mb-6">
+            <label class="block mb-2 font-medium">Gender</label>
+            <div class="relative">
+                <select class="form-input appearance-none pr-8">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Prefer not to say</option>
+                    <option>Custom</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-gray-500 text-xs mt-2">
+                This won't be part of your public profile.
+            </p>
+        </div>
+        
+        <!-- Password Change Section -->
+        <div class="bg-white rounded-lg p-6 mb-6">
+            <h2 class="font-medium text-lg mb-4">Change Password</h2>
+            
+            <!-- Current Password -->
+            <div class="mb-4">
+                <label class="block mb-2 text-sm">Current Password</label>
+                <div class="relative">
+                    <input type="password" class="form-input pr-10" placeholder="Enter your current password">
+                    <button class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 text-sm">
+                        Show
+                    </button>
+                </div>
+            </div>
+            
+            <!-- New Password -->
+            <div class="mb-4">
+                <label class="block mb-2 text-sm">New Password</label>
+                <div class="relative">
+                    <input type="password" class="form-input pr-10 mb-1" placeholder="Enter new password">
+                    <button class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 text-sm">
+                        Show
+                    </button>
+                </div>
+                
+                <!-- Password Strength Indicator -->
+                <div class="flex w-full h-1 mb-1">
+                    <div class="password-strength bg-red-500 w-1/4"></div>
+                    <div class="password-strength bg-orange-500 w-1/4"></div>
+                    <div class="password-strength bg-yellow-500 w-1/4"></div>
+                    <div class="password-strength bg-green-500 w-1/4"></div>
+                </div>
+                <p class="text-xs text-gray-500 mb-3">
+                    For a strong password, use at least 8 characters with a mix of letters, numbers, and symbols.
+                </p>
+            </div>
+            
+            <!-- Confirm New Password -->
+            <div class="mb-4">
+                <label class="block mb-2 text-sm">Confirm New Password</label>
+                <div class="relative">
+                    <input type="password" class="form-input pr-10" placeholder="Confirm new password">
+                    <button class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 text-sm">
+                        Show
+                    </button>
+                </div>
+            </div>
+            
+           
+            
+            <!-- Password Change Button -->
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition">
+                Change Password
+            </button>
+            
+            <div class="mt-4 pt-4 border-t border-gray-200">
+                <p class="text-xs text-gray-500">
+                    After changing your password, you'll be logged out of all devices except the ones you're using now.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Privacy Note -->
+        <div class="mb-6">
+            <p class="text-gray-500 text-sm">
+                Certain profile info, like your name, bio and links, is visible to everyone. 
+                <a href="#" class="text-blue-500">See what profile info is visible</a>
+            </p>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="flex justify-end">
+            <button class="bg-blue-100 text-blue-500 px-6 py-2 rounded-md text-sm font-medium hover:bg-blue-200 transition">
+                Submit
+            </button>
+        </div>
+    </div>
+</body>
+</html>

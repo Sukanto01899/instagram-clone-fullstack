@@ -1,0 +1,14 @@
+{"type":"like","userId":"JQg6HFNh1mHmB2sI","fromUserId":"imzy7nVeUHUHAZAn","postId":"GCoEYFdlrinizmP3","isRead":true,"createdAt":{"$$date":1749617408558},"_id":"7mJ5mICbxfs9PXXL"}
+{"type":"comment","userId":"JQg6HFNh1mHmB2sI","fromUserId":"imzy7nVeUHUHAZAn","postId":"GCoEYFdlrinizmP3","isRead":true,"createdAt":{"$$date":1749617654756},"_id":"HaBlIQvxdw6RrXsc"}
+{"type":"comment","userId":"HAuK5dfK1CRnZ2xb","fromUserId":"bZwf4WBPLJtnTGtr","postId":"fGjRldGZmzowJ6DF","isRead":false,"createdAt":{"$$date":1749619676805},"_id":"Kc0QCPy0vAElvMdf"}
+{"type":"like","userId":"JQg6HFNh1mHmB2sI","fromUserId":"imzy7nVeUHUHAZAn","postId":"GCoEYFdlrinizmP3","isRead":true,"createdAt":{"$$date":1749618340824},"_id":"MLcLlprUb1ZPKFta"}
+{"type":"like","userId":"imzy7nVeUHUHAZAn","fromUserId":"HAuK5dfK1CRnZ2xb","postId":"fITwFDGCjuXghsGA","isRead":true,"createdAt":{"$$date":1749619096171},"_id":"Tzio9bsHo53B2zTn"}
+{"type":"like","userId":"imzy7nVeUHUHAZAn","fromUserId":"HAuK5dfK1CRnZ2xb","postId":"MdmZtThnY4GqK0jv","isRead":false,"createdAt":{"$$date":1749619094871},"_id":"ayVf7ddNLnW4dkj0"}
+{"type":"like","userId":"JQg6HFNh1mHmB2sI","fromUserId":"HAuK5dfK1CRnZ2xb","postId":"L7XO3gup1pxlRzNU","isRead":true,"createdAt":{"$$date":1749619091984},"_id":"eRXz2Shd5OWzOQ3g"}
+{"type":"like","userId":"HAuK5dfK1CRnZ2xb","fromUserId":"JQg6HFNh1mHmB2sI","postId":"fGjRldGZmzowJ6DF","isRead":false,"createdAt":{"$$date":1749619124988},"_id":"gQ1Q01X5zsOweWri"}
+{"type":"comment","userId":"HAuK5dfK1CRnZ2xb","fromUserId":"bZwf4WBPLJtnTGtr","postId":"fGjRldGZmzowJ6DF","isRead":false,"createdAt":{"$$date":1749619945130},"_id":"jZpk1oVwjaKmvymH"}
+{"type":"comment","userId":"imzy7nVeUHUHAZAn","fromUserId":"JQg6HFNh1mHmB2sI","postId":"fITwFDGCjuXghsGA","isRead":false,"createdAt":{"$$date":1749619155655},"_id":"lP15wtlKIIUcm8qh"}
+{"type":"like","userId":"JQg6HFNh1mHmB2sI","fromUserId":"imzy7nVeUHUHAZAn","postId":"L7XO3gup1pxlRzNU","isRead":false,"createdAt":{"$$date":1749617407154},"_id":"mZoQosDolaaHkZje"}
+{"type":"like","userId":"imzy7nVeUHUHAZAn","fromUserId":"JQg6HFNh1mHmB2sI","postId":"fITwFDGCjuXghsGA","isRead":false,"createdAt":{"$$date":1749619137153},"_id":"r7RsyStkclaxH0ip"}
+{"type":"like","userId":"JQg6HFNh1mHmB2sI","fromUserId":"HAuK5dfK1CRnZ2xb","postId":"GCoEYFdlrinizmP3","isRead":true,"createdAt":{"$$date":1749619090371},"_id":"sOctmXzqOoukZb3J"}
+{"$$indexCreated":{"fieldName":"userId","unique":false,"sparse":false}}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account • Photo Booth</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Satoshi Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./assets/logo-2.svg" type="image/svg+xml">
+    <style>
+        
+        .login-container {
+            max-width: 450px;
+            width: 300px;
+            margin: 0 auto;
+            border-radius: 12px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 9px 8px;
+            background-color: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #a8a8a8;
+        }
+        .login-button {
+            background-color: #0095f6;
+            color: white;
+            width: 100%;
+            padding: 7px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .login-button:hover {
+            background-color: #0086e0;
+        }
+        .login-button:disabled {
+            background-color: #b2dffc;
+            cursor: not-allowed;
+        }
+        .facebook-button {
+            color: #385185;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .or-separator {
+            display: flex;
+            align-items: center;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 18px 0;
+        }
+        .or-separator::before,
+        .or-separator::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #dbdbdb;
+        }
+        .or-separator::before {
+            margin-right: 18px;
+        }
+        .or-separator::after {
+            margin-left: 18px;
+        }
+        .app-download {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div class="login-container rounded-md">
+            <!-- PhotoBooth Logo -->
+            <div class="flex justify-center mb-8">
+                <img src="./assets/logo.svg" alt="PhotoBooth" class="h-[51px]">
+            </div>
+            
+            <!-- Login Form -->
+            <div class="bg-white p-6 border border-gray-300 mb-3 rounded-md">
+                <form>
+                    <!-- Username/Email Field -->
+                    <div class="mb-3">
+                        <div class="relative">
+                            <input type="text" class="form-input" placeholder="Phone number, username, or email" aria-label="Phone number, username, or email">
+                        </div>
+                    </div>
+                    
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <div class="relative">
+                            <input type="password" class="form-input" placeholder="Password" aria-label="Password">
+                            <button type="button" class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 text-xs">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <div class="mb-4">
+                        <button type="submit" class="login-button">
+                            Log in
+                        </button>
+                    </div>
+                    
+                    <!-- OR Separator -->
+                    <div class="or-separator">
+                        OR
+                    </div>
+
+                    <div class="mb-4">
+                        <button type="submit" class="login-button">
+                            Log in with Google
+                        </button>
+                    </div>
+                   
+                    
+                    
+                </form>
+            </div>
+            
+            <!-- Sign Up Box -->
+            <div class="bg-white p-6 border border-gray-300 text-center ">
+                <p class="text-sm">
+                    Don't have an account? <a href="./register.html" class="text-blue-500 font-semibold">Sign up</a>
+                </p>
+            </div>
+            
+        
+        </div>
+       
+    </div>
+</body>
+</html>

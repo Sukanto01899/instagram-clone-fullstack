@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications • Instagram</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Satoshi Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./assets/logo-2.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Floating Navbar -->
+     <aside class="hidden floating-navbar bg-white  border px-6 py-2 md:flex flex-col">
+        <a href="./index.html" class="flex gap-2 items-center font-medium py-4 mb-8">
+            <img src="./assets/logo-2.svg" alt="PhotoBooth" class="h-6 object-contain">
+            <h2 class="text-lg">Photo Booth</h2>
+        </a>
+
+        <ul class="space-y-8 flex-1">
+            <li>
+                <a href="./index.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-zinc-800" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span class="text-sm text-zinc-800">Home</span>
+                </a>
+            </li>
+    
+            <li>
+                <a href="./notification.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-zinc-800" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span class="text-xs">Notifications</span>
+                </a>
+            </li>
+            <li>
+                <a href="./create-post.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-zinc-800" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    <span class="text-xs">Create</span>
+                </a>
+            </li>
+
+             <li>
+                <a href="./profile.html" class="flex flex-row items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="text-xs">Profile</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="flex  justify-between">
+            <a href="./profile.html">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-300">
+                        <img src="./assets/avatar.jpg" alt="User avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-2">
+                        <span class="font-semibold text-sm">Saad Hasan</span>
+                        <p class="text-xs text-gray-500  leading-0">@saadh393</p>
+                    </div>
+                </div>
+            </a>
+
+            <button title="logout" class="">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
+                    <path
+                        d="m8 0c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm-3.5 4h6.5v2h-6.5c-1.379 0-2.5 1.122-2.5 2.5v5.5h-2v-5.5c0-2.481 2.019-4.5 4.5-4.5zm11.5 8h2v2h-2c-1.654 0-3-1.346-3-3v-6c0-1.654 1.346-3 3-3h2v2h-2c-.552 0-1 .449-1 1v6c0 .551.448 1 1 1zm8-3.941c0 .548-.24 1.07-.658 1.432l-2.681 2.362-1.322-1.5 1.535-1.354h-3.874v-2h3.74l-1.401-1.235 1.322-1.5 2.688 2.37c.411.355.651.877.651 1.425z" />
+                </svg>
+            </button>
+        </div>
+    </aside>
+
+    <div class="notifications-container">
+        <!-- Header -->
+        <header class="sticky top-0 bg-white  z-10">
+            <div class="flex items-center justify-between p-4">
+               
+                <h1 class="text-lg font-semibold">Notifications</h1>
+            </div>
+        </header>
+
+        <!-- Notifications List -->
+        <div class="notifications-list">
+            <!-- Today Section -->
+            <div class="px-4 py-3 border-b border-gray-100">
+                <h2 class="text-base font-semibold">Today</h2>
+            </div>
+
+            <!-- Like Notification -->
+            <div class="notification-item flex items-center p-4 border-b border-gray-100">
+                <div class="relative">
+                    <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+                        <img src="./assets/users/user-1.png" alt="User avatar" class="w-full h-full object-cover">
+                    </div>
+                    
+                </div>
+                <div class="flex-1 mr-3">
+                    <p class="text-sm">
+                        <span class="font-semibold">john_doe</span> liked your photo.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1">2m</p>
+                </div>
+                <div class="w-11 h-11 rounded overflow-hidden">
+                    <img src="./assets/users/user-1.png" alt="Post thumbnail" class="post-thumbnail">
+                </div>
+            </div>
+
+            <!-- Comment Notification -->
+            <div class="notification-item flex items-center p-4 border-b border-gray-100">
+                <div class="relative">
+                    <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+                        <img src="./assets/users/user-1.png" alt="User avatar" class="w-full h-full object-cover">
+                    </div>
+                    
+                </div>
+                <div class="flex-1 mr-3">
+                    <p class="text-sm">
+                        <span class="font-semibold">sarah_wilson</span> commented: "Amazing shot! 🔥"
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1">5m</p>
+                </div>
+                <div class="w-11 h-11 rounded overflow-hidden">
+                    <img src="./assets/users/user-1.png" alt="Post thumbnail" class="post-thumbnail">
+                </div>
+            </div>
+
+            
+
+            <!-- Multiple Likes Notification -->
+            <div class="notification-item flex items-center p-4 border-b border-gray-100">
+                <div class="relative mr-3">
+                    <div class="w-11 h-11 rounded-full overflow-hidden">
+                        <img src="./assets/users/user-1.png" alt="User avatar" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="flex-1 mr-3">
+                    <p class="text-sm">
+                        <span class="font-semibold">emma_jones</span>  liked your photo.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1">1h</p>
+                </div>
+                <div class="w-11 h-11 rounded overflow-hidden">
+                    <img src="./assets/users/user-1.png" alt="Post thumbnail" class="post-thumbnail">
+                </div>
+            </div>
+
+            <!-- Yesterday Section -->
+            <div class="px-4 py-3 border-b border-gray-100">
+                <h2 class="text-base font-semibold">Yesterday</h2>
+            </div>
+
+            <!-- Story Like Notification -->
+            <div class="notification-item flex items-center p-4 border-b border-gray-100">
+                <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+                    <img src="./assets/users/user-1.png" alt="User avatar" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 mr-3">
+                    <p class="text-sm">
+                        <span class="font-semibold">lisa_travel</span> liked your story.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1">1d</p>
+                </div>
+                <div class="w-11 h-11 rounded overflow-hidden border-2 border-gray-300">
+                    <img src="./assets/users/user-1.png" alt="Story thumbnail" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+           
+
+            <!-- Comment Reply Notification -->
+            <div class="notification-item flex items-center p-4 border-b border-gray-100">
+                <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+                    <img src="./assets/users/user-1.png" alt="User avatar" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 mr-3">
+                    <p class="text-sm">
+                        <span class="font-semibold">anna_fitness</span> replied to your comment: "Thanks for the tip!"
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1">1d</p>
+                </div>
+                <div class="w-11 h-11 rounded overflow-hidden">
+                    <img src="./assets/users/user-1.png" alt="Post thumbnail" class="post-thumbnail">
+                </div>
+            </div>
+
+            <!-- This Week Section -->
+            <div class="px-4 py-3 border-b border-gray-100">
+                <h2 class="text-base font-semibold">This Week</h2>
+            </div>
+
+            <!-- Multiple Comments Notification -->
+            <div class="notification-item flex items-center p-4 border-b border-gray-100">
+                <div class="relative mr-3">
+                    <div class="w-11 h-11 rounded-full overflow-hidden">
+                        <img src="./assets/users/user-1.png" alt="User avatar" class="w-full h-full object-cover">
+                    </div>
+                    
+                </div>
+                <div class="flex-1 mr-3">
+                    <p class="text-sm">
+                        <span class="font-semibold">tom_artist</span> and <span class="font-semibold">3 others</span> commented on your photo.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1">3d</p>
+                </div>
+                <div class="w-11 h-11 rounded overflow-hidden">
+                    <img src="./assets/users/user-1.png" alt="Post thumbnail" class="post-thumbnail">
+                </div>
+            </div>
+
+           
+
+            <!-- Like on Comment Notification -->
+            <div class="notification-item flex items-center p-4 border-b border-gray-100">
+                <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+                    <img src="./assets/users/user-1.png" alt="User avatar" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 mr-3">
+                    <p class="text-sm">
+                        <span class="font-semibold">maria_design</span> liked your comment: "Love this aesthetic!"
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1">6d</p>
+                </div>
+                <div class="w-11 h-11 rounded overflow-hidden">
+                    <img src="./assets/users/user-1.png" alt="Post thumbnail" class="post-thumbnail">
+                </div>
+            </div>
+
+            <!-- Padding at bottom for scroll -->
+            <div class="h-20"></div>
+        </div>
+    </div>
+</body>
+</html>
