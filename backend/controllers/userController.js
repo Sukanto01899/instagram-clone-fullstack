@@ -171,10 +171,31 @@ const pokeUser = async (req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Check if user exists
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Remove password from user object
+    const { password, ...userWithoutPassword } = user;
+
+    res.json(userWithoutPassword);
+  } catch (error) {
+    console.error("Get user by ID error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   getMe,
   updateMe,
   updateAvatar,
   changePassword,
   pokeUser,
+  getUserById,
 };
