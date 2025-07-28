@@ -3,6 +3,8 @@ const cors = require("cors");
 const path = require("path");
 const rateLimit = require("express-rate-limit");
 const { errorHandler } = require("./middleware/errorHandler");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 // Import routes
 const authRoutes = require("./routes/auth");
@@ -21,8 +23,11 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
 
+console.log(process.env.ORIGIN_URL)
+
 // Middleware
-app.use(cors());
+app.use(cors({credentials: true, origin: process.env.ORIGIN_URL}));
+app.use(cookieParser());
 app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

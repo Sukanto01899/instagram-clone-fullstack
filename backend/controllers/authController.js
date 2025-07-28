@@ -25,9 +25,20 @@ const signup = async (req, res) => {
     // Store refresh token in database
     await Token.storeRefreshToken(user._id, refreshToken);
 
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: "Lax",
+    });
+
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: "Lax",
+    });
+
+
     res.status(201).json({
-      accessToken,
-      refreshToken,
       user: {
         _id: user._id,
         name: user.name,
@@ -78,9 +89,19 @@ const login = async (req, res) => {
     // Remove password from user object
     const { password: _, ...userWithoutPassword } = user;
 
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: "Lax",
+    });
+
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: "Lax",
+    });
+
     res.json({
-      accessToken,
-      refreshToken,
       user: userWithoutPassword,
     });
   } catch (error) {
@@ -173,24 +194,25 @@ const resetPassword = async (req, res) => {
  */
 const refreshToken = async (req, res) => {
   try {
-    const { refreshToken } = req.body;
+    
+    const cookieRefreshToken = req?.cookies?.refreshToken;
 
     // Validate input
-    if (!refreshToken) {
+    if (!cookieRefreshToken) {
       return res.status(400).json({ message: "Refresh token is required" });
     }
 
     // Verify refresh token (JWT verification)
     let decoded;
     try {
-      decoded = verifyRefreshToken(refreshToken);
+      decoded = verifyRefreshToken(cookieRefreshToken);
     } catch (error) {
       return res.status(401).json({ message: "Invalid refresh token" });
     }
 
     // Verify refresh token exists in database and is not expired
     try {
-      await Token.verifyRefreshToken(refreshToken);
+      await Token.verifyRefreshToken(cookieRefreshToken);
     } catch (error) {
       return res.status(401).json({ message: error.message });
     }
@@ -202,18 +224,29 @@ const refreshToken = async (req, res) => {
     }
 
     // Generate new tokens
-    const { accessToken, refreshToken: newRefreshToken } = generateTokens(user);
-
+    const { accessToken, refreshToken} = generateTokens(user);
+    const newRefreshToken = refreshToken;
     // Delete old refresh token and store new one
-    await Token.deleteToken(refreshToken);
+    await Token.deleteToken(cookieRefreshToken);
     await Token.storeRefreshToken(user._id, newRefreshToken);
 
     // Remove password from user object
     const { password: _, ...userWithoutPassword } = user;
 
+    console.log("Tokens refreshed successfully");
+
+    res.cookie("refreshToken", refreshToken , {
+      httpOnly: true,
+      secure: false,
+      sameSite: "Lax",
+    });
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "Lax",
+    });
+
     res.json({
-      accessToken,
-      refreshToken: newRefreshToken,
       user: userWithoutPassword,
     });
   } catch (error) {
@@ -240,6 +273,9 @@ const logout = async (req, res) => {
     if (req.user) {
       await Token.deleteRefreshTokensForUser(req.user._id);
     }
+
+    res.clearCookie("accessToken");
+    res.clearCookie("refreshToken");
 
     res.json({ message: "Logged out successfully" });
   } catch (error) {

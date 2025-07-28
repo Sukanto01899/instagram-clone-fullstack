@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const Poke = require("../models/Poke");
 const Notification = require("../models/Notification");
+const cloudinary = require("../config/cloudinary");
+const fs = require('fs')
 
 /**
  * Get current user profile
@@ -29,13 +31,17 @@ const updateMe = async (req, res) => {
     // Only update fields that are provided
     if (name !== undefined) {
       if (name.trim().length < 2) {
-        return res.status(400).json({ message: "Name must be at least 2 characters long" });
+        return res
+          .status(400)
+          .json({ message: "Name must be at least 2 characters long" });
       }
       updateData.name = name.trim();
     }
     if (bio !== undefined) {
       if (bio.length > 150) {
-        return res.status(400).json({ message: "Bio must be 150 characters or less" });
+        return res
+          .status(400)
+          .json({ message: "Bio must be 150 characters or less" });
       }
       updateData.bio = bio;
     }
@@ -70,9 +76,12 @@ const updateAvatar = async (req, res) => {
     }
 
     const avatarPath = req.file.path;
+    const uploadFileToCloudinary = await cloudinary.uploader.upload(avatarPath);
+    fs.unlinkSync(avatarPath); //delete temporary file
 
+    console.log(uploadFileToCloudinary.secure_url)
     // Update user avatar
-    await User.updateAvatar(req.user._id, avatarPath);
+    await User.updateAvatar(req.user._id, uploadFileToCloudinary.secure_url);
 
     // Get updated user data
     const updatedUser = await User.findById(req.user._id);
@@ -99,18 +108,25 @@ const changePassword = async (req, res) => {
 
     // Validate input
     if (!currentPassword || !newPassword) {
-      return res.status(400).json({ message: "Current password and new password are required" });
+      return res
+        .status(400)
+        .json({ message: "Current password and new password are required" });
     }
 
     if (newPassword.length < 6) {
-      return res.status(400).json({ message: "New password must be at least 6 characters long" });
+      return res
+        .status(400)
+        .json({ message: "New password must be at least 6 characters long" });
     }
 
     // Get current user with password
     const user = await User.findById(req.user._id);
 
     // Verify current password
-    const isCurrentPasswordValid = await User.comparePassword(currentPassword, user.password);
+    const isCurrentPasswordValid = await User.comparePassword(
+      currentPassword,
+      user.password
+    );
     if (!isCurrentPasswordValid) {
       return res.status(400).json({ message: "Current password is incorrect" });
     }

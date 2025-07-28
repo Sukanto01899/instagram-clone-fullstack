@@ -3,6 +3,7 @@ const Comment = require("../models/Comment");
 const Notification = require("../models/Notification");
 const User = require("../models/User");
 const fs = require("fs");
+const cloudinary = require('../config/cloudinary')
 
 /**
  * Helper function to populate post with likes and comments user data
@@ -57,18 +58,23 @@ const populatePostData = async (post) => {
 const createPost = async (req, res) => {
   try {
     const { caption } = req.body;
-    let image = null;
+    let imagePath = null;
 
     if (req.file) {
-      image = req.file.path;
+      imagePath = req.file.path;
     }
+
+    const uploadFileToCloudinary = await cloudinary.uploader.upload(imagePath);
+    fs.unlinkSync(imagePath) //delete temporary file
 
     // Create post
     const post = await Post.create({
       userId: req.user._id,
       caption,
-      image,
+      image: uploadFileToCloudinary.secure_url,
     });
+
+    console.log(post)
 
     res.status(201).json(post);
   } catch (error) {

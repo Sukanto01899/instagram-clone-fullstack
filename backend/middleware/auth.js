@@ -7,16 +7,18 @@ const db = require("../config/database");
 const auth = async (req, res, next) => {
   try {
     // Get token from header
-    const authHeader = req.headers.authorization;
+    // const authHeader = req.headers.authorization;
+    const token = req?.cookies?.accessToken;
+    console.log("Cookie Token:", token);
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({
-        message: "Authentication required",
-        code: "NO_TOKEN",
-      });
-    }
+    // if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    //   return res.status(401).json({
+    //     message: "Authentication required",
+    //     code: "NO_TOKEN",
+    //   });
+    // }
 
-    const token = authHeader.split(" ")[1];
+    // const token = authHeader.split(" ")[1];
 
     if (!token) {
       return res.status(401).json({
@@ -28,6 +30,7 @@ const auth = async (req, res, next) => {
     // Verify access token
     let decoded;
     try {
+
       decoded = verifyAccessToken(token);
     } catch (error) {
       if (error.name === "TokenExpiredError") {

@@ -1,0 +1,84 @@
+.dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.dialog {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 100%;
+  animation: dialogFadeIn 0.3s ease-out;
+}
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #58c322;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.primary-button {
+  background-color: #0095f6;
+  color: white;
+  width: 100%;
+  padding: 7px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+.primary-button:hover {
+  background-color: #0086e0;
+}
+.secondary-button {
+  color: #0095f6;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.secondary-button:hover {
+  color: #0086e0;
+}
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Demo styles - for showing different dialog variants */
+.demo-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.demo-title {
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.demo-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

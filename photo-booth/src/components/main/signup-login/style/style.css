@@ -1,0 +1,105 @@
+.container {
+  max-width: 450px;
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+.form-input {
+  width: 100%;
+  padding: 9px 8px;
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #a8a8a8;
+}
+.button {
+  background-color: #0095f6;
+  color: white;
+  width: 100%;
+  padding: 7px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+.button:hover {
+  background-color: #0086e0;
+}
+.button:disabled {
+  background-color: #b2dffc;
+  cursor: not-allowed;
+}
+.facebook-button {
+  color: #385185;
+  font-weight: 600;
+  font-size: 14px;
+}
+.or-separator {
+  display: flex;
+  align-items: center;
+  color: #8e8e8e;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 18px 0;
+}
+.or-separator::before,
+.or-separator::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #dbdbdb;
+}
+.or-separator::before {
+  margin-right: 18px;
+}
+.or-separator::after {
+  margin-left: 18px;
+}
+.app-download {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+
+
+.facebook-button {
+  color: #385185;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.or-separator {
+  display: flex;
+  align-items: center;
+  color: #8e8e8e;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 18px 0;
+}
+
+.or-separator::before,
+.or-separator::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #dbdbdb;
+}
+
+.or-separator::before {
+  margin-right: 18px;
+}
+
+.or-separator::after {
+  margin-left: 18px;
+}
+
+.app-download {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
