@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Token = require("../models/Token");
 const { generateTokens, verifyRefreshToken } = require("../config/jwt");
+const sendCookies = require('../libs/sendCookies')
 
 /**
  * Handle user signup
@@ -25,17 +26,8 @@ const signup = async (req, res) => {
     // Store refresh token in database
     await Token.storeRefreshToken(user._id, refreshToken);
 
-    res.cookie("accessToken", accessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.SAMESITE,
-    });
-
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.SAMESITE,
-    });
+    // Sent access & refresh token by cookie
+    sendCookies({res, refreshToken, accessToken})
 
 
     res.status(201).json({
@@ -89,17 +81,8 @@ const login = async (req, res) => {
     // Remove password from user object
     const { password: _, ...userWithoutPassword } = user;
 
-    res.cookie("accessToken", accessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.SAMESITE,
-    });
-
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.SAMESITE,
-    });
+    // Sent access & refresh token by cookie
+    sendCookies({res, refreshToken, accessToken})
 
     res.json({
       user: userWithoutPassword,
@@ -235,16 +218,8 @@ const refreshToken = async (req, res) => {
 
     console.log("Tokens refreshed successfully");
 
-    res.cookie("refreshToken", refreshToken , {
-      httpOnly: true,
-      secure: false,
-      sameSite: process.env.SAMESITE,
-    });
-    res.cookie("accessToken", accessToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: process.env.SAMESITE,
-    });
+   // Sent access & refresh token by cookie
+    sendCookies({res, refreshToken, accessToken})
 
     res.json({
       user: userWithoutPassword,

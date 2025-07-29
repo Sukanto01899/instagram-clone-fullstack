@@ -3,11 +3,11 @@ const jwt = require("jsonwebtoken");
 // In a production environment, this would be stored in environment variables
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 // Expire in 2 minutes for testing purposes
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "2m";
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "15m";
 
 // Refresh token configuration
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || "your-refresh-secret-key";
-const REFRESH_TOKEN_EXPIRES_IN = process.env.REFRESH_TOKEN_EXPIRES_IN || "20m";
+const REFRESH_TOKEN_EXPIRES_IN = process.env.REFRESH_TOKEN_EXPIRES_IN || "7d";
 
 /**
  * Generate a JWT access token for a user
