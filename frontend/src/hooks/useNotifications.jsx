@@ -16,7 +16,7 @@ const useNotifications = () => {
     }
   }, [data, myId, dispatch, isSuccess])
 
-  return {notifications, isLoading};
+  return {notifications, isLoading, isSuccess};
 };
 
 export default useNotifications;

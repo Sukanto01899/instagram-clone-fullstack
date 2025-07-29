@@ -42,7 +42,7 @@ const ProfilePictureEdit = ({ userInfo, setUserInfo, handleUploadPicture, upload
         </div>
         <div>
           <h2 className="font-semibold text-base">{userInfo.name}</h2>
-          <p className="text-gray-500">{userInfo.email}</p>
+          <p className="text-gray-500">{userInfo.email.split('@')[0]}</p>
         </div>
 
         {/* File input */}
@@ -61,7 +61,7 @@ const ProfilePictureEdit = ({ userInfo, setUserInfo, handleUploadPicture, upload
           onClick={handleUploadPicture}
           className="ml-auto bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition"
         >
-          {uploading ? "Uploading..." : "Change photo"}
+          {uploading ? "Uploading..." : "Upload"}
         </button>
       </div>
     </div>

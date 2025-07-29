@@ -4,7 +4,7 @@ import { CustomBaseQuery } from "../baseQuery/CustomBaseQuery";
 export const postsApi = createApi({
   reducerPath: "postsApi",
   baseQuery: CustomBaseQuery,
-  tagTypes: ["Posts"],
+  tagTypes: ["Posts", "Post"],
   refetchOnFocus: true,
   refetchOnReconnect: true,
   keepUnusedDataFor: 60, // Keep data for 60 seconds
@@ -28,7 +28,7 @@ export const postsApi = createApi({
         url: `/posts/${id}`,
         method: "GET",
       }),
-      providesTags: (result, error, id) => [{ type: "Posts", id }],
+      providesTags: (result, error, id) => [{ type: "Post", id }],
     }),
     createPost: builder.mutation({
       query: (postData) => ({
@@ -44,7 +44,7 @@ export const postsApi = createApi({
         method: "POST",
       }),
       invalidatesTags: (result, error, { postId }) => [
-        { type: "Posts", id: postId },
+        { type: "Post", id: postId },
       ],
     }),
     getUserPosts: builder.query({
@@ -66,14 +66,18 @@ export const postsApi = createApi({
         method: "POST",
         body: { text },
       }),
-      invalidatesTags: [{ type: "Posts", id: "LIST" }],
+      invalidatesTags: (result, error, { postId }) => [
+        { type: "Post", id: postId },
+      ],
     }),
     deleteMyPost: builder.mutation({
       query: (postId) => ({
         url: `/posts/${postId}`,
         method: "DELETE",
       }),
-      invalidatesTags: [{ type: "Posts", id: "LIST" }],
+      invalidatesTags: (result, error, { postId }) => [
+        { type: "Post", id: postId },
+      ],
     }),
     getAllNotifications: builder.query({
       query: () => ({

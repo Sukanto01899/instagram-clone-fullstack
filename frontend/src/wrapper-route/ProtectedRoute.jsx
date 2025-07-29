@@ -3,6 +3,7 @@ import { useGetMyProfileQuery } from "../services/user/userService";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../store/slice/auth/authSlice";
 import { Navigate, useLocation } from "react-router-dom";
+import MainLoading from "../components/Loader/main-loader/MainLoading";
 
 const ProtectedRoute = ({ children }) => {
   const auth = useSelector((state) => state.auth);
@@ -17,10 +18,10 @@ const ProtectedRoute = ({ children }) => {
   }, [isSuccess, auth.userInfo, disPatch, data]);
 
   if (isLoading || (!auth.userInfo && !isError)) {
-    return <div>Loading...</div>;
+    return <MainLoading/>
   }
 
-  if (isError) {
+  if (isError && !auth.userInfo) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

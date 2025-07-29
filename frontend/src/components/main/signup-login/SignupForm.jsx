@@ -33,7 +33,10 @@ const SignupForm = () => {
             if (result) {
                 // Dispatch action to set user info in the store
                 dispatch(setUserInfo(result.user));
-                navigate(from, { replace: true });
+                
+                setTimeout(()=>{
+                    navigate(from, { replace: true });
+                }, 100)
             }
         }catch (error) {
             console.error("Signup error:", error);
@@ -49,7 +52,7 @@ const SignupForm = () => {
             <div className="container">
                 {/* <!-- PhotoBooth Logo --> */}
                 <div className="flex justify-center mb-4">
-                    <img src="./assets/logo-2.svg" alt="PhotoBooth" className="h-[51px]" />
+                    <img src="/logo-2.svg" alt="PhotoBooth" className="h-[51px]" />
                 </div>
 
                 {/* <!-- Sign Up Form --> */}

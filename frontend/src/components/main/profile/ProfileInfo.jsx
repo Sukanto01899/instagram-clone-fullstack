@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 
-const ProfileInfo = ({ user }) => {
+const ProfileInfo = ({ user, postsCount }) => {
   const { _id } = useSelector((state) => state.auth.userInfo);
 
   return (
@@ -24,7 +24,7 @@ const ProfileInfo = ({ user }) => {
       {/* <!-- Stats --> */}
       <div className="flex justify-center sm:justify-start space-x-8 mb-4 mt-2">
         <div>
-          <span className="font-semibold">53</span> posts
+          <span className="font-semibold">{postsCount}</span> posts
         </div>
       </div>
 

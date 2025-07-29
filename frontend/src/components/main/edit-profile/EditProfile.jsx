@@ -45,7 +45,9 @@ const EditProfile = () => {
   };
 
   const handleUploadPicture = async () => {
-    if (!userInfo.avatar) return;
+    if (!userInfo.avatar) {
+      return alert('Select photo')
+    };
     const formData = new FormData();
     formData.append("avatar", userInfo.avatar);
 

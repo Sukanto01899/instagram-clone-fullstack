@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useCreatePostContext from '../../../hooks/useCreatePostContext';
 import { actions } from './create-post-context/PostReducer';
 
 const PostCaption = () => {
-    const {dispatch, state} = useCreatePostContext()
+    const {dispatch, state} = useCreatePostContext();
+    const [wordCount, setWordCount] = useState(0);
+    const [wordLimit] = useState(2200)
     const handleCaptionChange = (e) => {
+        const value = e.target?.value.length;
+        setWordCount(e.target.value.length)
+
+        if(value > wordLimit){
+            return console.log('Word limit cross')
+        }
         dispatch({type: actions.set_caption, payload: e.target.value})
     }
+
     return (
         <div className="p-4 border-b flex-grow">
                 <div className="mb-2">
@@ -26,7 +35,7 @@ const PostCaption = () => {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </button>
-                    <span className="text-gray-400 text-xs">15/2,200</span>
+                    <span className={`${wordCount > wordLimit ? "text-red-500" : "text-gray-400"} text-xs`}>{wordCount}/{wordLimit}</span>
                 </div>
             </div>
     );

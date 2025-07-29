@@ -2,9 +2,11 @@ import React from "react";
 import NotificationsHeader from "./NotificationsHeader";
 import useNotifications from "../../../hooks/useNotifications";
 import SingleNotification from "./SingleNotification";
+import LoaderItem from "../../Loader/notifications-loader/LoaderItem";
+import NotificationsLoading from "../../Loader/notifications-loader/NotificationsLoading";
 
 const Notifications = () => {
-  const { notifications } = useNotifications();
+  const { notifications, isLoading, isSuccess } = useNotifications();
 
 
   return (
@@ -16,7 +18,11 @@ const Notifications = () => {
       <div className="notifications-list">
         {/* <!-- Today Section --> */}
 
-        {notifications.map((notification) => (
+        {
+          isLoading && <NotificationsLoading/>
+        }
+
+        { (!isLoading || isSuccess) && notifications.map((notification) => (
           <SingleNotification key={notification?._id} notification={notification} />
         ))}
 

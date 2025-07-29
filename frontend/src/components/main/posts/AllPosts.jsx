@@ -3,12 +3,14 @@ import SinglePost from "./SinglePost";
 import { useGetAllPostsQuery } from "../../../services/post/postService";
 import { useDispatch, useSelector } from "react-redux";
 import { appendPosts, clearPosts } from "../../../store/slice/posts/postSlice";
+import LoaderItem from "../../Loader/post-loader/LoaderItem";
+import PostsLoading from "../../Loader/post-loader/PostsLoading";
 
 const AllPosts = () => {
     const [page, setPage] = useState(1);
-    const [limit] = useState(1);
+    const [limit] = useState(5);
     const [hasMore, setHasMore] = useState(true);
-    const { data: postsData, isFetching } = useGetAllPostsQuery({ page, limit });
+    const { data: postsData, isFetching, isLoading, isSuccess } = useGetAllPostsQuery({ page, limit });
     const posts = useSelector((state) => state.post.posts);
     const dispatch = useDispatch();
     const loadingRef = useRef(null);
@@ -52,9 +54,14 @@ const AllPosts = () => {
             <div>
                 {/* Render all posts */}
 
-                {posts?.map((post) => (
+                {
+                    isLoading && <PostsLoading/>
+                }
+
+                {(!isLoading || isSuccess) && posts?.map((post) => (
                     <SinglePost key={post?._id} post={post} />
                 ))}
+
 
                 {hasMore && (
                     <h1 ref={loadingRef} className="text-center">

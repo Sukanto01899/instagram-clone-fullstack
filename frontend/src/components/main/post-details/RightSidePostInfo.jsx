@@ -55,10 +55,10 @@ const RightSidePostInfo = ({ post }) => {
 
       {/* <!-- Add Comment --> */}
       <div className="p-3 flex items-center">
-        <Avatar avatar={post?.user?.image} userId={post?.user?._id} />
+        <Avatar avatar={post?.user?.avatar} userId={post?.user?._id} />
         <form
           action={handleComment}
-          className="flex-1 flex items-center justify-between"
+          className="flex-1 flex items-center justify-between ml-2"
         >
           <input
             name="comment"

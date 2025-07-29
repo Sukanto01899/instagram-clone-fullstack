@@ -17,11 +17,11 @@ const SingleNotification = ({notification}) => {
     return (
         <div className="notification-item flex items-center p-4 border-b border-gray-100">
             <div className="relative mr-3">
-                <Avatar userId={notification?.fromUserId} avatar={notification.fromUser.avatar}/>
+                <Avatar userId={notification?.fromUserId} avatar={notification.fromUser?.avatar}/>
             </div>
             <div className="flex-1 mr-3">
                 <p className="text-sm">
-                    <span className="font-semibold">john_doe</span> {type}
+                    <span className="font-semibold">{notification.fromUser?.name}</span> {type}
                 </p>
                 <p className="text-xs text-gray-500 mt-1">2m</p>
             </div>

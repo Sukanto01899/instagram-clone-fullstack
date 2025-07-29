@@ -5,32 +5,33 @@ import { useSelector } from 'react-redux';
 import { useGetUserPostsQuery } from '../../../services/post/postService';
 import { useParams } from 'react-router-dom';
 import PostsGrid from '../../sub/post-grid/PostsGrid';
+import ProfileLoading from '../../Loader/profile-loader/ProfileLoading';
 
 const Profile = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const auth = useSelector((state) => state.auth);
-    const { data: userData } = useGetUserPostsQuery(id || auth?.userInfo?._id);
+    const { data: userData, isLoading } = useGetUserPostsQuery(id || auth?.userInfo?._id);
 
 
     return (
-        <div class="main-container">
-       <div class="profile-container">
-         {/* <!-- Profile Header --> */}
-        <div class="flex flex-col md:flex-row mb-10">
-            {/* <!-- Profile Picture --> */}
-            <ProfilePicture avatar={userData?.user?.avatar}/>
+         isLoading ? <ProfileLoading/> :  (<div class="main-container">
+            <div class="profile-container">
+                {/* <!-- Profile Header --> */}
+                <div class="flex flex-col md:flex-row mb-10">
+                    {/* <!-- Profile Picture --> */}
+                    <ProfilePicture avatar={userData?.user?.avatar} />
 
-            {/* <!-- Profile Info --> */}
-            <ProfileInfo user={userData?.user}/>
-        </div>
+                    {/* <!-- Profile Info --> */}
+                    <ProfileInfo user={userData?.user} postsCount={userData?.posts?.length} />
+                </div>
 
-        <section>
-            <h3 class="font-semibold text-lg mb-4">Posts</h3>
-            {/* <!-- Photo Grid --> */}
-            <PostsGrid posts={userData?.posts}/>
-        </section>
-       </div>
-    </div>
+                <section>
+                    <h3 class="font-semibold text-lg mb-4">Posts</h3>
+                    {/* <!-- Photo Grid --> */}
+                    <PostsGrid posts={userData?.posts} />
+                </section>
+            </div>
+        </div>)
     );
 };
 
