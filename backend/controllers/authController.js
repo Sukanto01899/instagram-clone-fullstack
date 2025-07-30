@@ -219,7 +219,7 @@ const refreshToken = async (req, res) => {
     console.log("Tokens refreshed successfully");
 
    // Sent access & refresh token by cookie
-    sendCookies({res, refreshToken, accessToken})
+    sendCookies({res, refreshToken: newRefreshToken, accessToken})
 
     res.json({
       user: userWithoutPassword,

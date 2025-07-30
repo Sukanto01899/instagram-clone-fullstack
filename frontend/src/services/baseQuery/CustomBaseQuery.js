@@ -11,6 +11,8 @@ export const CustomBaseQuery = async (args, api, extraOptions) => {
 
   if(result.error && result.error.status === 401) {
 
+
+    console.log('request for the access token with refresh token')
     // Attempt to refresh the access token
     const refreshResult = await baseQuery({
         url: '/auth/refresh-token',
@@ -18,6 +20,7 @@ export const CustomBaseQuery = async (args, api, extraOptions) => {
       }, api, extraOptions);
 
       if(refreshResult?.data) {
+        console.log('retry again with new access token')
         result = await baseQuery(args, api, extraOptions);
       }else{
         // If refresh failed, log out the user

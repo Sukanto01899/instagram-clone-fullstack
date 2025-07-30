@@ -33,6 +33,8 @@ const auth = async (req, res, next) => {
 
       decoded = verifyAccessToken(token);
     } catch (error) {
+
+      console.log(error)
       if (error.name === "TokenExpiredError") {
         return res.status(401).json({
           message: "Access token expired",

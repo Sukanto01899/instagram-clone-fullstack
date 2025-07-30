@@ -18,7 +18,6 @@ const RightSidePostInfo = ({ post }) => {
     const comment = formData.get("comment");
     if (!comment) return;
     handleAddComment(comment);
-    
   };
 
 

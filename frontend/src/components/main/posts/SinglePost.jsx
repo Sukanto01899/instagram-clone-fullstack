@@ -12,7 +12,7 @@ const SinglePost = ({ post }) => {
     const { handleLike, isLiked, likesCount } = useLike(post?._id);
 
     return (
-        <article className="pb-4 mb-4 max-w-[560px] mx-auto border border-gray-200 shadow-sm rounded-md">
+        <article className="pb-4 mb-4 max-w-[560px] mx-auto border bg-white border-gray-200 shadow-sm rounded-md">
             {/* <!-- Post Header --> */}
             <PostHeader
                 state={{

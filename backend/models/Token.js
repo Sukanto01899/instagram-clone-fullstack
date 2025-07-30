@@ -34,7 +34,7 @@ class Token {
    */
   static async storeRefreshToken(userId, refreshToken) {
     const expiresAt = new Date();
-    expiresAt.setMinutes(expiresAt.getMinutes() + 20); // Token expires in 20 minutes
+    expiresAt.setMinutes(expiresAt.getMinutes() + 10080); // Token expires in 20 minutes
 
     const tokenDoc = {
       userId,
